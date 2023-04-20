@@ -1,0 +1,6 @@
+# ALL THE PACKAGES ARE STORED HERE
+
+pandas
+numpy
+seaborn
+-e .
