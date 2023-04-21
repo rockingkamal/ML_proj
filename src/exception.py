@@ -1,12 +1,16 @@
 import sys   #contrlling all then errors and having info init
-import logging
+sys.path.append("/Users/kamalthej/ML_project")
+
+from src.logger import logging
 
 
 def error_message_detail(error, error_detail:sys):
     _,_,exc_tb=error_detail.exc_info()
     file_name=exc_tb.tb_frame.f_code.co_filename
-    error_message="Error occured in python script name[{0}] line number [{1} error message]".formate()
-    file_name,exc_tb.tb_lineno,str(error)
+    error_message="Error occured in python script name[{0}] line number [{1} error message]".formate(
+     file_name,exc_tb.tb_lineno,str(error))
+
+    return error_message
 
 
 class CustomException(Exception):
@@ -18,18 +22,20 @@ class CustomException(Exception):
         return self.error_message 
 
 
-
-
 '''
-#"to test the file run the below code"
+
+ "to test the file run the below code"
 
 
 if __name__ == '__main__':
 
     try:
-        a=1/10
+        a=0
+        raise AssertionError("invalid...")
+
     except Exception as e:
         logging.info("Divide by zero")
         raise CustomException(e, sys)
+
 
 '''
